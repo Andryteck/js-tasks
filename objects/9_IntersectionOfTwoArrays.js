@@ -8,5 +8,5 @@ let intersect = function (nums1, nums2) {
         }
     }
 
-    return Array.from(new Set(result))
+    return result
 }
