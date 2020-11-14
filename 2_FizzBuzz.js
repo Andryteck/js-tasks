@@ -8,12 +8,10 @@ var fizzBuzz = function (n) {
         } else if (i % 5 === 0) {
             result.push('Buzz')
         } else if (i % 5 === 0 && i % 3 === 0) {
-            result.push('FizzBuzz');
+            result.push('FizzBuzz')
         } else {
-            result.push(i.toString());
+            result.push(i.toString())
         }
-
     }
-
     return result
 }
