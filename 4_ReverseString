@@ -3,7 +3,6 @@
 let reverseString = function (s) {
     for (let i = s.length - 1; i >= 0; i--) {
         s.push(s[i])
-
     }
-    return s.splice(0, 5)
-};
+    return s.splice(0, s.length / 2)
+}

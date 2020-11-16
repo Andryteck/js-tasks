@@ -2,17 +2,27 @@
 
 var relativeSortArray = function (arr1, arr2) {
     let resultArr = []
-    for (let j = 0; j <= arr2.length - 1; j++) {
-        for (let i = 0; i <= arr1.length - 1; i++) {
-            if (arr1[i] === arr2[j]) {
-                resultArr.push(arr1[i])
-            }
+    let tail = []
+    let hash = {}
+
+    for (let i = 0; i < arr1.length; i++) {
+        let current = arr1[i];
+        if (hash[current]) {
+            hash[current] += 1;
+        } else {
+            hash[current] = 1;
         }
     }
-    for (let k = 0; k <= arr1.length - 1; k++) {
-        if (resultArr.indexOf(arr1[k]) === -1) {
-            resultArr.push(arr1[k])
+    for (let i = 0; i < arr2.length; i++) {
+        let current = arr2[i];
+        if (hash[current]) {
+            resultArr.push(...new Array(hash[current]).fill(current));
+            delete hash[current];
         }
     }
+    for (let i in hash) {
+        tail.push(...new Array(hash[i]).fill(i))
+    }
+    resultArr.push(...tail.sort((a, b) => a - b));
     return resultArr
-};
+}

@@ -2,23 +2,15 @@
 
 var reverseVowels = function (s) {
     let vowels = 'aeiouAEIOU'
-    let stringInArray = s.split('')
     let resultArr = []
-
-    for (let i = 0; i <= s.length - 1; i++) {
-        if (vowels.indexOf(s[i]) !== -1) {
-            resultArr.push(s[i])
+    for (let i = 0; i < s.length; i++) {
+        if (vowels.includes(s[i])) {
+            resultArr.push(i)
         }
     }
-
-    let lastIndex = resultArr.length - 1
-
-    for (let i = 0; i <= stringInArray.length - 1; i++) {
-        if (vowels.indexOf(stringInArray[i]) !== -1) {
-            stringInArray[i] = resultArr[lastIndex]
-            lastIndex--
-        }
+    let arr = s.split('');
+    for (let j = 0; j < (resultArr.length) / 2; j++) {
+        [arr[resultArr[j]], arr[resultArr[resultArr.length - j - 1]]] = [arr[resultArr[resultArr.length - j - 1]], arr[resultArr[j]]]
     }
-    if (s !== stringInArray.join('')) return stringInArray.join('')
-
-};
+    return arr.join('')
+}

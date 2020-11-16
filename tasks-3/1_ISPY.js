@@ -20,7 +20,7 @@ function spyOn(func) {
     }
 
     spy.wasCalledWith = function (value) {
-        return calls.some(function (call) {
+        return resArr.some(function (call) {
             for (let i = 0; i < call[0].length; i++) {
                 if (call[0][i] === value) {
                     return true
@@ -29,5 +29,5 @@ function spyOn(func) {
         })
     }
 
-    return spy;
+    return spy
 }
